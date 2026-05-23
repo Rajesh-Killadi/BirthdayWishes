@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Surprise ❤️</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      overflow:hidden;
+      height:100vh;
+      background:black;
+      color:white;
+    }
+
+    /* BACKGROUND */
+
+    .background{
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:
+      linear-gradient(
+      135deg,
+      #0f0c29,
+      #302b63,
+      #24243e);
+      z-index:-2;
+    }
+
+    /* FLOATING HEARTS */
+
+    .heart{
+      position:absolute;
+      color:#ff4d88;
+      animation:floatUp linear infinite;
+      opacity:0.7;
+    }
+
+    @keyframes floatUp{
+      0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+      }
+
+      20%{
+        opacity:1;
+      }
+
+      100%{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+      }
+    }
+
+    /* SCREEN */
+
+    .screen{
+      position:absolute;
+      width:100%;
+      height:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:20px;
+      text-align:center;
+    }
+
+    /* INTRO */
+
+    #intro h1{
+      font-size:48px;
+      margin-bottom:20px;
+      animation:glow 2s infinite alternate;
+    }
+
+    #typing{
+      font-size:24px;
+      max-width:700px;
+      line-height:1.8;
+      color:#ffd6e7;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #ff4d88;
+      }
+      to{
+        text-shadow:
+        0 0 20px #ff4d88,
+        0 0 40px #ff4d88;
+      }
+    }
+
+    /* BALLOON */
+
+    #balloon-section{
+      display:none;
+    }
+
+    .balloon{
+      width:200px;
+      height:240px;
+      background:#ff3b6b;
+      border-radius:50%;
+      position:relative;
+      cursor:pointer;
+      animation:float 2s infinite ease-in-out;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      box-shadow:0 10px 40px rgba(255,59,107,0.5);
+    }
+
+    .balloon::after{
+      content:"";
+      position:absolute;
+      bottom:-70px;
+      width:2px;
+      height:70px;
+      background:white;
+    }
+
+    .balloon span{
+      font-size:70px;
+    }
+
+    .balloon p{
+      margin-top:10px;
+      font-size:20px;
+      padding:0 15px;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-25px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* FINAL SCREEN */
+
+    #final-screen{
+      display:none;
+      animation:fadeIn 2s ease;
+    }
+
+    .photo{
+      width:260px;
+      height:260px;
+      border-radius:25px;
+      object-fit:cover;
+      border:5px solid white;
+      box-shadow:0 0 40px rgba(255,255,255,0.4);
+      margin-bottom:25px;
+    }
+
+    #final-screen h1{
+      font-size:52px;
+      margin-bottom:20px;
+      animation:glow 2s infinite alternate;
+    }
+
+    .wish{
+      max-width:750px;
+      font-size:24px;
+      line-height:1.8;
+      color:#ffe6f0;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:scale(0.7);
+      }
+
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+    }
+
+    /* SLIDESHOW */
+
+    .slideshow{
+      margin-top:30px;
+      font-size:20px;
+      color:#ffb6d0;
+      min-height:40px;
+      animation:fadeText 2s infinite;
+    }
+
+    @keyframes fadeText{
+      0%{opacity:0}
+      50%{opacity:1}
+      100%{opacity:0}
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      #intro h1{
+        font-size:34px;
+      }
+
+      #typing{
+        font-size:20px;
+      }
+
+      .photo{
+        width:220px;
+        height:220px;
+      }
+
+      #final-screen h1{
+        font-size:40px;
+      }
+
+      .wish{
+        font-size:20px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="background"></div>
+
+  <!-- INTRO -->
+
+  <div id="intro" class="screen">
+
+    <h1>Someone has a surprise for you ❤️</h1>
+
+    <div id="typing"></div>
+
+  </div>
+
+  <!-- BALLOON -->
+
+  <div id="balloon-section" class="screen">
+
+    <div class="balloon" id="balloon">
+
+      <span>🎈</span>
+
+      <p>Pop to see the magic ✨</p>
+
+    </div>
+
+  </div>
+
+  <!-- FINAL SCREEN -->
+
+  <div id="final-screen" class="screen">
+
+    <!-- REPLACE THIS IMAGE -->
+    <img
+      src="girl-photo.jpg"
+      class="photo"
+      alt="Birthday Girl"
+    >
+
+    <h1>Happy Birthday ❤️</h1>
+
+    <p class="wish">
+
+      Wishing you endless happiness,
+      smiles, love and beautiful memories ✨
+
+      <br><br>
+
+      Stay blessed and keep shining forever 💖
+
+    </p>
+
+    <div class="slideshow" id="slideText"></div>
+
+  </div>
+
+  <!-- MUSIC -->
+
+  <!-- REPLACE THIS SONG -->
+  <audio id="music" src="birthday.mp3"></audio>
+
+  <script>
+
+    // FLOATING HEARTS
+
+    function createHearts(){
+
+      setInterval(()=>{
+
+        const heart =
+        document.createElement("div");
+
+        heart.classList.add("heart");
+
+        heart.innerHTML = "❤️";
+
+        heart.style.left =
+        Math.random()*100 + "vw";
+
+        heart.style.fontSize =
+        Math.random()*25 + 15 + "px";
+
+        heart.style.animationDuration =
+        Math.random()*5 + 5 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+          heart.remove();
+        },10000);
+
+      },400);
+    }
+
+    createHearts();
+
+    // TYPING EFFECT
+
+    const text =
+    "Hey beautiful... ✨ Today is special because someone amazing was born ❤️";
+
+    let index = 0;
+
+    function typeText(){
+
+      if(index < text.length){
+
+        document.getElementById("typing")
+        .innerHTML += text.charAt(index);
+
+        index++;
+
+        setTimeout(typeText,90);
+
+      }else{
+
+        setTimeout(()=>{
+
+          document.getElementById("intro")
+          .style.display = "none";
+
+          document.getElementById("balloon-section")
+          .style.display = "flex";
+
+        },2500);
+
+      }
+    }
+
+    typeText();
+
+    // BALLOON POP
+
+    const balloon =
+    document.getElementById("balloon");
+
+    balloon.addEventListener("click",()=>{
+
+      balloon.style.transform =
+      "scale(1.6)";
+
+      balloon.style.opacity = "0";
+
+      setTimeout(()=>{
+
+        document.getElementById(
+        "balloon-section")
+        .style.display = "none";
+
+        document.getElementById(
+        "final-screen")
+        .style.display = "flex";
+
+        document.getElementById(
+        "music").play();
+
+        createConfetti();
+
+      },500);
+
+    });
+
+    // CONFETTI
+
+    function createConfetti(){
+
+      for(let i=0;i<150;i++){
+
+        const confetti =
+        document.createElement("div");
+
+        confetti.style.position="absolute";
+
+        confetti.style.width="10px";
+        confetti.style.height="10px";
+
+        confetti.style.background =
+        `hsl(${Math.random()*360},100%,50%)`;
+
+        confetti.style.left =
+        Math.random()*window.innerWidth+"px";
+
+        confetti.style.top="-20px";
+
+        confetti.style.borderRadius="50%";
+
+        confetti.style.animation =
+        `fall ${2+Math.random()*3}s linear forwards`;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(()=>{
+          confetti.remove();
+        },5000);
+
+      }
+    }
+
+    // FALL ANIMATION
+
+    const style =
+    document.createElement("style");
+
+    style.innerHTML = `
+      @keyframes fall{
+        to{
+          transform:
+          translateY(110vh)
+          rotate(720deg);
+          opacity:0;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+
+    // SLIDESHOW TEXTS
+
+    const messages = [
+
+      "Your smile is literally magical ✨",
+      "Today is all about you ❤️",
+      "Stay happy forever 💖",
+      "You deserve the best in life 🌸",
+      "Keep shining beautiful 🌙"
+
+    ];
+
+    let msgIndex = 0;
+
+    setInterval(()=>{
+
+      document.getElementById(
+      "slideText").innerHTML =
+      messages[msgIndex];
+
+      msgIndex =
+      (msgIndex + 1) % messages.length;
+
+    },2500);
+
+  </script>
+
+</body>
+</html>
